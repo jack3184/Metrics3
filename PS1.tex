@@ -27,7 +27,7 @@
 %% Convenient math abbreviations
 \newcommand*\diff{\mathop{}\!d} % nicely formatted integral dx
 %\newcommand{\E}{\mathrm{E}} % Expectation operator
-\newcommand{\Var}{\mathrm{Var}} % Variance operator
+\newcommand{\Var}{\mathrm{V}} % Variance operator
 \newcommand{\Cov}{\mathrm{Cov}} % Covariance operator
 %\newtheorem{problem}{Problem}
 %\DeclarePairedDelimiter\norm{\lVert}{\rVert} % For Euclidean norm
@@ -58,7 +58,11 @@ Verify that the uniform metric defined as $d (f, g) = \sup\limits_{t \in \mathbb
 \bigskip
 %2
 \begin{problem}
-
+We have $\E|X|^p < 0$ where $X$ is real-valued and $p > 0$. Then
+$(\forall \omega ) \  |X|^p \ge |X|^p \mathbf{1}_{\{|X|>M\}}
+\rightarrow 0$ as $M \rightarrow \infty$. Therefore $|X|^p \mathbf{1}_{\{|X|>M\}}
+\xrightarrow[]{a.s} 0$. The conditions for DCT being satisfied, $\E \left[|X|^p \mathbf{1}_{\{|X|>M\}}\right]
+\rightarrow 0$
 \end{problem}
 
 \bigskip
@@ -78,7 +82,31 @@ Then $\bar{X_t} - \mu \overset{\mathbb{P}}{\rightarrow} 0$ which is equivalent t
 
 \bigskip
 %4
-\begin{problem}
+\begin{problem} To prove the result, we will show $\sum r^2_{n,i} - \int_0^1 \sigma^2(s)
+  ds$ converges in mean.  First, notice
+  $\int_0^1 \sigma^2(s) ds = \lim \sum_{i=1}^n \tfrac{1}{n} \sigma^2(
+  \tfrac{i}{ n}) $, so that
+  \begin{equation*}
+ \sum r^2_{n,i} - \int_0^1 \sigma^2(s) ds = \sum
+  \tfrac{1}{n}\sigma^2( \tfrac{i}{ n}) \left( X_i^2 - 1 \right)
+\end{equation*}
+Further, since the function $\sigma$ is continuous on a compact set,
+its image is bounded. Say $|\sigma(x)| \le K \ \left(\forall x \in
+  [0,1]\right)$. Now
+\begin{equation*}
+  \E \left|  \sum
+  \tfrac{1}{n}\sigma^2( \tfrac{i}{ n}) \left( X_i^2 - 1 \right)\right|
+\le K \E \left| \overline{X^2_i} - 1 \right|
+\end{equation*}
+So it is sufficient to show $\overline{X^2_i} \xrightarrow{L_1}
+1$. Though it is easier to show $L_2$ convergence:
+\begin{equation*}
+  \E \left| \overline{X^2_i} - 1 \right|^2 = \Var \left(\overline{X_i^2}\right) =
+  \tfrac{1}{n^2} \sum \Var \left(X_i^2\right) = \tfrac{1}{n}
+  \rightarrow 0
+\end{equation*}
+Where we have used that $\{X_i^2\} \overset{iid}{\sim} \chi^2_1$. Thus $\sum r^2_{n,i} - \int_0^1 \sigma^2(s)
+  ds$ converges in probability.
 
 \end{problem}
 
