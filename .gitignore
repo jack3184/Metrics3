@@ -224,6 +224,7 @@ pip-log.txt
 *.out
 *.synctex.gz
 *.log
+*.pdf
 
 
 #############
