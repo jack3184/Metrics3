@@ -73,7 +73,7 @@ Let $\{X_i\}_{i \in \mathbb{N}}$ be a sequence of random variables with mean $\m
 \textbf{Solution:} Consider any $\epsilon>0$. Using Markov inequality we get
 \begin{align*}
 P(|\bar{X_t} - \mu| > \epsilon) &\leq \frac{\mathbb{E}( |\bar{X_t} - \mu|^2)}{\epsilon^2} = \frac{V(\bar{X_t})}{\epsilon^2} \\
-&\leq \frac{\sum_{t=1}^T V(X_t)}{T^2 \epsilon^2} = \frac{K \sum_{t=1}^T t^{1/2}}{T^2 \epsilon^2} \\
+&= \frac{\sum_{t=1}^T V(X_t)}{T^2 \epsilon^2} \le \frac{K \sum_{t=1}^T t^{1/2}}{T^2 \epsilon^2} \\
 &\leq \frac{K T^{3/2}}{T^2 \epsilon^2} \overset{t \to \infty}{\longrightarrow} 0
 \end{align*}
 
