@@ -82,32 +82,27 @@ Then $\bar{X_t} - \mu \overset{\mathbb{P}}{\rightarrow} 0$ which is equivalent t
 
 \bigskip
 %4
-\begin{problem} To prove the result, we will show $\sum r^2_{n,i} - \int_0^1 \sigma^2(s)
-  ds$ converges in mean.  First, notice
+\begin{problem} We aim to show $\sum r^2_{n,i} - \int_0^1 \sigma^2(s)
+  ds \xrightarrow[]{p} 0$, where $\{X_i\} \overset{iid}{\sim} N(0,1)$
+  and $\sigma$ is a bounded function. To prove the result, we will apply question 3.  First, notice
   $\int_0^1 \sigma^2(s) ds = \lim \sum_{i=1}^n \tfrac{1}{n} \sigma^2(
   \tfrac{i}{ n}) $, so that
   \begin{equation*}
  \sum r^2_{n,i} - \int_0^1 \sigma^2(s) ds = \sum
   \tfrac{1}{n}\sigma^2( \tfrac{i}{ n}) \left( X_i^2 - 1 \right)
 \end{equation*}
-Further, since the function $\sigma$ is continuous on a compact set,
-its image is bounded. Say $|\sigma(x)| \le K \ \left(\forall x \in
-  [0,1]\right)$. Now
+Fixing $n$, define the random variable
 \begin{equation*}
-  \E \left|  \sum
-  \tfrac{1}{n}\sigma^2( \tfrac{i}{ n}) \left( X_i^2 - 1 \right)\right|
-\le K \E \left| \overline{X^2_i} - 1 \right|
+  Y_i = \sigma^2(\tfrac{i}{n}) \left( X_i^2 - 1 \right)
 \end{equation*}
-So it is sufficient to show $\overline{X^2_i} \xrightarrow{L_1}
-1$. Though it is easier to show $L_2$ convergence:
+Which is distributed $\sigma^2(\tfrac{i}{n}) \left( \chi^2_1 -
+  1\right)$. So $\{ Y_i\}$ are mean zero, independent and $\Var (Y_i) =
+2 \sigma^2(\tfrac{i}{n}) \le K \le K \sqrt{i}$ for $i \in \mathbb{N}$
+since $\sigma^2$ is bounded. So applying Q3:
 \begin{equation*}
-  \E \left| \overline{X^2_i} - 1 \right|^2 = \Var \left(\overline{X_i^2}\right) =
-  \tfrac{1}{n^2} \sum \Var \left(X_i^2\right) = \tfrac{1}{n}
-  \rightarrow 0
+   \sum r^2_{n,i} - \int_0^1 \sigma^2(s) ds = \overline{Y_i}
+   \xrightarrow[]{p} 0
 \end{equation*}
-Where we have used that $\{X_i^2\} \overset{iid}{\sim} \chi^2_1$. Thus $\sum r^2_{n,i} - \int_0^1 \sigma^2(s)
-  ds$ converges in probability.
-
 \end{problem}
 
 \bigskip
