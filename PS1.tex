@@ -126,7 +126,7 @@ The inequalities above give that $X_t$ is uniformly integrable.
 %6
 \begin{problem}
 Suppose that $|X_t| \leq Y$ for some integrable random variable $Y$ and all $t \in \mathbb{T}$.
-Then $\{ X_t: t \in \mathbb{T} \}$ is uniformly integrable. \\
+Then $\{ X_t: t \in \mathbb{T} \}$ is uniformly integrable. \textit{(Hint: The function $x \mapsto x1[x>M]$ is increasing on $\mathbb{R}_+$; then use the dominated convergence theorem).}\\
 
 \textbf{Solution:} 
 
@@ -137,7 +137,7 @@ Then $\{ X_t: t \in \mathbb{T} \}$ is uniformly integrable. \\
 	\implies \sup_{t \in \mathbb{T}} \mathbb{E} \left[ |X_t| 1_{\{ |X_t| \geq M \}} \right] &\leq \sup_{t \in \mathbb{T}} \mathbb{E} \left[ Y 1_{\{ Y \geq M \}} \right] = \mathbb{E} \left[ Y 1_{\{ Y \geq M \}} \right] \\
 	\implies \lim_{M \to \infty} \sup_{t \in \mathbb{T}} \mathbb{E} \left[ |X_t| 1_{\{ |X_t| \geq M \}} \right] &\leq \underbrace{\lim_{M \to \infty} \mathbb{E} \left[ Y 1_{\{ Y \geq M \}} \right]}_{= 0 \text{ as $Y$ is integrable}} \\
 	\implies \lim_{M \to \infty} \sup_{t \in \mathbb{T}} \mathbb{E} \left[ |X_t| 1_{\{ |X_t| \geq M \}} \right] &= 0
-	\intertext{The second line follows from the fact that the indicator function is stricly increasing.
+	\intertext{The second line follows from the fact that the indicator function is stricly increasing for a given M.
 	The third line follows from the fact that expectation is strictly increasing.}
 \end{align*}
 \end{problem}
