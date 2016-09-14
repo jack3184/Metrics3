@@ -35,7 +35,7 @@
 
 % Title
 \title{Problem Set 1 \\ \medskip \Large{Econometrics III}}
-\author{\Large Jackson Bunting, Attila Gyetvai, Peter Horvath, Leonardo Salim Saker Chaves\footnote{Department of Economics, Duke University}}
+\author{\Large Jackson Bunting, Attila Gyetvai, Peter Horvath, Leonardo Salim Saker Chaves}
 \date{\today}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -58,7 +58,7 @@ Verify that the uniform metric defined as $d (f, g) = \sup\limits_{t \in \mathbb
 \bigskip
 %2
 \begin{problem}
-We have $\E|X|^p < 0$ where $X$ is real-valued and $p > 0$. Then
+We have $\E|X|^p < \infty$ where $X$ is real-valued and $p > 0$. Then
 $(\forall \omega ) \  |X|^p \ge |X|^p \mathbf{1}_{\{|X|>M\}}
 \rightarrow 0$ as $M \rightarrow \infty$. Therefore $|X|^p \mathbf{1}_{\{|X|>M\}}
 \xrightarrow[]{a.s} 0$. The conditions for DCT being satisfied, $\E \left[|X|^p \mathbf{1}_{\{|X|>M\}}\right]
@@ -126,7 +126,7 @@ The inequalities above give that $X_t$ is uniformly integrable.
 %6
 \begin{problem}
 Suppose that $|X_t| \leq Y$ for some integrable random variable $Y$ and all $t \in \mathbb{T}$.
-Then $\{ X_t: t \in \mathbb{T} \}$ is uniformly integrable. \textit{(Hint: The function $x \mapsto x1[x>M]$ is increasing on $\mathbb{R}_+$; then use the dominated convergence theorem).}\\
+Then $\{ X_t: t \in \mathbb{T} \}$ is uniformly integrable. textit{(Hint: The function $x \mapsto x1[x>M]$ is increasing on $\mathbb{R}_+$; then use the dominated convergence theorem).}\\
 
 \textbf{Solution:} 
 
@@ -137,7 +137,8 @@ Then $\{ X_t: t \in \mathbb{T} \}$ is uniformly integrable. \textit{(Hint: The f
 	\implies \sup_{t \in \mathbb{T}} \mathbb{E} \left[ |X_t| 1_{\{ |X_t| \geq M \}} \right] &\leq \sup_{t \in \mathbb{T}} \mathbb{E} \left[ Y 1_{\{ Y \geq M \}} \right] = \mathbb{E} \left[ Y 1_{\{ Y \geq M \}} \right] \\
 	\implies \lim_{M \to \infty} \sup_{t \in \mathbb{T}} \mathbb{E} \left[ |X_t| 1_{\{ |X_t| \geq M \}} \right] &\leq \underbrace{\lim_{M \to \infty} \mathbb{E} \left[ Y 1_{\{ Y \geq M \}} \right]}_{= 0 \text{ as $Y$ is integrable}} \\
 	\implies \lim_{M \to \infty} \sup_{t \in \mathbb{T}} \mathbb{E} \left[ |X_t| 1_{\{ |X_t| \geq M \}} \right] &= 0
-	\intertext{The second line follows from the fact that the indicator function is stricly increasing for a given M.
+	\intertext{The second line follows from the fact that the
+indicator function is stricly increasing for a given M.
 	The third line follows from the fact that expectation is strictly increasing.}
 \end{align*}
 \end{problem}
@@ -211,7 +212,9 @@ Interpret and prove that $e^{o_p(1)} -1 = o_p(1)$ and $(O_p(1))^{\sqrt{2}} = O_p
 
 \textbf{Solution:} If you pick a r.v. $X = o_p(1)$, then a continuous transformation will also be $o_p(1)$. The proof is a straightforward consequence of CMT.
 
-For the second claim, the interpretation is that you preserve $O_p(1)$ property when you take a continuous function of this r.v.. To prove, let $X_n = O_p(1)$. By definition, $\exists M>0 ; \sup_{n \in \mathbb{N}} P(|X_n|>M)<\epsilon)$. Notice that $\{\omega \in \Omega : |X_n(\omega)|>M\} = \{\omega \in \Omega : |X_n(\omega)|^{\sqrt{2}}>M^{\sqrt{2}}\}$ because it is a monotonic transformation. Thus, $\exists \eta = M^{\sqrt{2}}>0 ; \sup_{n \in \mathbb{N}} P(|X_n^{\sqrt{2}}|>\eta)<\epsilon)$.
+For the second claim, the interpretation is that you preserve $O_p(1)$
+property when you take a continuous function of this r.v.. To prove,
+let $X_n = O_p(1)$, where $X_n$ may be complex valued. By definition, $\exists M>0 ; \sup_{n \in \mathbb{N}} P(|X_n|>M)<\epsilon)$. Notice that $\{\omega \in \Omega : |X_n(\omega)|>M\} = \{\omega \in \Omega : |X_n(\omega)|^{\sqrt{2}}>M^{\sqrt{2}}\}$ because it is a monotonic transformation. Thus, $\exists \eta = M^{\sqrt{2}}>0 ; \sup_{n \in \mathbb{N}} P(|X_n^{\sqrt{2}}|>\eta)<\epsilon)$.
 \end{problem}
 
 \bigskip
@@ -258,8 +261,7 @@ Let $(X_i)_{i \in \mathbb{N}}$ be a sequence of iid random variables with mean $
 Initially consider $X_{n,i} = \frac{X_i - \mu}{\sqrt{n}}$. Now, we need to verify the assumptions of Lindeberg's CLT.
 \begin{enumerate}
 \item $\{X_{n,i}\}$ independent, real-valued, and zero mean. \\
-Since we are applying a continuous function to rv's which are iid by assumption, independence will be preserved. Moreover, considering $X_i:\Omega \mapsto \mathbb{R}$, we will have $X_{n,i}$ real-valued. And notice that $\mathbb{E}[X_{n,i}] = \mathbb{E}[(X_i - \mu)/\sqrt{n}] = 0$.\\ 
-\item $\sum_{i=1}^n V(X_{n,i} = \frac{\sum_{i=1}^n \sigma^2}{n} = \sigma^2$
+Since we are applying a continuous function to rv's which are iid by assumption, independence will be preserved. Moreover, considering $X_i:\Omega \mapsto \mathbb{R}$, we will have $X_{n,i}$ real-valued. And notice that $\mathbb{E}[X_{n,i}] = \mathbb{E}[(X_i - \mu)/\sqrt{n}] = 0$.\\  $\sum_{i=1}^n V(X_{n,i}) = \frac{\sum_{i=1}^n \sigma^2}{n} = \sigma^2$
 \item $\lim_{n \to \infty} \sum_{i=1}^n \mathbb{E}[X_{n,i}^2 I[|X_{n,i}|>\epsilon]] =0$\\
 Using an argument similar to Q5, we have $\frac{|X_{n,i}|^{2+\delta}}{\epsilon^{\delta}} \geq I[|X_{n,i}|>\epsilon]$. Therefore,
 \begin{center}
