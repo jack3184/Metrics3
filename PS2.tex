@@ -3,7 +3,7 @@
 %\usepackage{amsfonts} % For \mathbb command
 %\usepackage[top=1in, bottom=1.25in, left=1in, right=1in]{geometry}
 %\usepackage{amsmath} % for align
-%\usepackage{mathtools} % for lVert
+\usepackage{mathtools} % for lVert
 %\usepackage{graphicx} % for charts
 
 % Set path
@@ -59,8 +59,13 @@ a gives $\theta_1 = \theta_2$ and for $a$.
 
 %2.4
 \section*{Unif Convergence: Problem 3}
-$(X_t) \sim $
+$(X_t)_{t=1}^{n} \overset{iid}{\sim} N(\mu, v) $. $\Omega = \{ \theta
+\coloneqq (\mu,
+v): |\mu| \le \overline{\mu}, v \in [\underline{v}, \overline{v}]\}$.
+
 \paragraph*{a}
+$Q_n(\theta) = \tfrac{1}{2}\log 2\pi + \tfrac{1}{2} \log v +
+\tfrac{1}{n2v} \sum(x_i - \mu)$
 
 
 \end{document}
