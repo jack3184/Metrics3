@@ -178,7 +178,11 @@ Then we have the convergence in probability.
 \begin{problem}
 Under Assumptions 2 and 3 above, $\hat{H}_n \equiv \nabla_{\theta\theta}(\widehat{\theta_n}) \overset{P}{\rightarrow} H$.\\
 
-\textbf{Solution:} We will assume throughout the answer that $\widehat{\theta_n}\overset{p}{\rightarrow}\theta_0$. Also, it will be useful to use the following definition of s.e.; for any two sequences of $\Theta$-valued random variables $\{\theta_{1n}\}_{n\in\mathbb{N}}, \{\theta_{2n}\}_{n\in\mathbb{N}}$ with $d(\theta_{1n},\theta_{2n})\overset{p}{\rightarrow}0$ we have $Q_n(\theta_{1n}) - Q_n(\theta_{2n})\overset{p}{\rightarrow}0$.
+\textbf{Solution:} We will assume throughout the answer that $\widehat{\theta_n}\overset{p}{\rightarrow}\theta_0$. Also, it will be useful to use the following definition of s.e.; for any two sequences of $\Theta$-valued random variables $\{\theta_{1n}\}_{n\in\mathbb{N}}, \{\theta_{2n}\}_{n\in\mathbb{N}}$ with $d(\theta_{1n},\theta_{2n})\overset{p}{\rightarrow}0$ we have $Q_n(\theta_{1n}) - Q_n(\theta_{2n})\overset{p}{\rightarrow}0$.\\
+
+Assumption 2 and the consistency of $\widehat{\theta_n}$ gives us $\nabla_{\theta\theta}(\widehat{\theta_n}) - \nabla_{\theta\theta}(\widehat{\theta_0}) \overset{p}{\rightarrow}0$ which is equivalent to say $\nabla_{\theta\theta}(\widehat{\theta_n}) \overset{p}{\rightarrow} \nabla_{\theta\theta}(\widehat{\theta_0}) = H(\theta_0)$.\\
+
+Finally, Assumption 3 would allow us to apply CMT and get a consistent estimator for $H^{-1}$.
 \end{problem}
 
 
