@@ -43,8 +43,17 @@
 \begin{document}
 
 \maketitle
+\section*{Consistency of M-Estimation} 
+
+
+%1.1
+\begin{problem}
+\end{problem}
+
+\bigskip
 %1.2
-\section*{M Estimation: Problem 2} If $\theta \neq 0$ and $a \in \mathbb{R}$, then
+\begin{problem}
+If $\theta \neq 0$ and $a \in \mathbb{R}$, then
 $\mathrm{P}(\theta' X = a) < 1$
 \paragraph*{a}
 $\theta \in \mathbb{R}^2$ and $a \in \mathbb{R}$. Suppose
@@ -56,16 +65,128 @@ $\theta_1,\theta_1 \in \mathbb{R}^2$ and $a_1,a_2 \in
 \mathbb{R}$. Suppose $1 = \mathrm{P}(X'\theta_1 + a_1 = X'\theta_2 +
 a_2) = \mathrm{P}\left(X'(\theta_2-\theta_1) = (a_1-a_2)\right)$. Part
 a gives $\theta_1 = \theta_2$ and for $a$.
+\end{problem}
 
-%2.4
-\section*{Unif Convergence: Problem 3}
+\bigskip
+%1.3
+\begin{problem}
+\end{problem}
+
+%---------------------------------------------------------------%
+%---------------------------------------------------------------%
+
+\section*{Stochastic Equicontinuity}
+%2.1
+\begin{problem}
+Let $(\Theta, d)$ be a metric space. Let $(G_n)_{n \in \mathbb{N}}$ and $(Q_n)_{n \in \mathbb{N}}$ be two sequences of random functions, both are stochastically equicontinuous. Then $(G_n + Q_n)_{n \in \mathbb{N}}$ is also s.e.\\
+
+\textbf{Solution:} The result will be a consequence of the triangle inequality.
+\begin{center}
+$|G_n(\theta)+Q_n(\theta)-G_n(\theta')-Q_n(\theta')|\leq |G_n(\theta)-G_n(\theta')|+|Q_n(\theta)-Q_n(\theta')|$
+\end{center}
+Then take $\varepsilon>0, \eta>0$. From $G_n, Q_n$ s.e., $\exist \delta_1,\delta_2>0$; $P(\omega(G_n,\delta_1)>\varepsilon)<\eta/2$ and $P(\omega(Q_n,\delta_2)>\varepsilon)<\eta/2$. Define $\delta^*=min\{\delta_1,\delta_2\}$. Hence,
+\begin{center}
+$\{\omega(G_n+Q_n,\delta^*)>\varepsilon\} \subseteq \{\omega(G_n,\delta^*)>\varepsilon\} \cup \{\omega(Q_n,\delta^*)>\varepsilon\}$
+\end{center}
+\begin{align*}
+&\implies P(\omega(G_n+Q_n,\delta^*)>\varepsilon)\leq P(\omega(G_n,\delta^*)>\varepsilon) + P(\omega(Q_n,\delta^*)>\varepsilon)\\
+&\implies \lim_{n\to\infty}\sup P(\omega(G_n+Q_n,\delta^*)>\varepsilon) < \eta/2+\eta/2=\eta
+\end{align*}
+Since $\varepsilon$ and $\eta$ are arbitrary, we have the result.
+\end{problem}
+
+\bigskip
+%2.2
+\begin{problem}
+\end{problem}
+
+\bigskip
+%2.3
+\begin{problem}
 $(X_t)_{t=1}^{n} \overset{iid}{\sim} N(\mu, v) $. $\Omega = \{ \theta
 \coloneqq (\mu,
 v): |\mu| \le \overline{\mu}, v \in [\underline{v}, \overline{v}]\}$.
-
 \paragraph*{a}
 $Q_n(\theta) = \tfrac{1}{2}\log 2\pi + \tfrac{1}{2} \log v +
 \tfrac{1}{n2v} \sum(x_i - \mu)$
+\end{problem}
+
+\bigskip
+%2.4
+\begin{problem}
+\textit{(Median Regression)} Let $Y_t = X_t^T\theta_0 + \varepsilon_t$ where $\theta_0 \in \Theta \subseteq \mathbb{R}^q$ for some $q \in \mathbb{N}$ and compact $\Theta$. Suppose that median$(\varepsilon_t|X_t)=0$. Let $Q_n(\theta) = \frac{1}{n}\sum_{i=1}^n |Y_t - X_t'\theta|$ and $\widehat{\theta_n} = arg\min_{\theta \in \Theta} Q_n(\theta)$.
+\paragraph*{a)} Show that $Q_n$ converges in probability uniformly to some deterministic function Q. Design conditions for this to hold. What is your Q function? \\
+
+\textbf{Solution:} We want to apply Theorem 2.b from this lecture notes to get unifromly convergence of $Q_n$. So, we will check its assumptions.
+\begin{enumerate}
+\item From $\Theta$ compact we can get a totally bounded metric space using $d(\theta,\theta')=||\theta-\theta'||_q = \left(\sum_{i=1}^q |\theta_i-\theta_i'|^q\right)^{1/q}$. 
+\item \textit{Assumption 1}: $\{(X_i,Y_i)\}$ are i.i.d.. This allow us to can apply LLN to get our $Q(\theta)=\mathbb{E}(|Y-X'\theta|)$. Hence we define $\tilde{Q}_n(\theta) = Q_n(\theta)-Q(\theta)$. We already know that $\tilde{Q}_n(\theta) = o_p(1)$.
+\item Verifying that $\tilde{Q}_n(\theta)$ is s.e. For this we will try to get a Lipschitz-type condition.
+\begin{align*}
+|\tilde{Q}_n(\theta_1)-\tilde{Q}_n(\theta_2)| &=\frac{1}{n} \left| \sum_{i=1}^n |Y_t - X_t'\theta_1| - |Y_t - X_t'\theta_2|\right|\\
+&\leq \frac{1}{n} \left| \sum_{i=1}^n |Y_t - X_t'\theta_2| +|X_t'(\theta_2-\theta_1)| - |Y_t - X_t'\theta_2|\right| \ \text{by Loeve's Cr ineq.}\\
+&\leq \frac{1}{n} \sum_{i=1}^n |X_t'(\theta_2-\theta_1)| \leq ||(\theta_2-\theta_1)|| \frac{1}{n} \sum_{i=1}^n ||X_t||
+\end{align*}
+\textit{Assumption 2}: $\frac{1}{n} \sum_{i=1}^n ||X_t|| = O_p(1)$. This guarantees that we have a Lipschitz-type condition in which $|\tilde{Q}_n(\theta_1)-\tilde{Q}_n(\theta_2)| \leq B_n . h(d(\theta_1,\theta_2))$. This will give s.e. according to Theorem 3.
+\end{enumerate}
+
+\paragraph{b)} Show that $\widehat{\theta}_n\overset{P}{\rightarrow}\theta_0$. Be clear about what you assume, and then prove your claim.\\
+
+\textbf{Solution:} To show consistency, we will need to check two assumptions; that $\tilde{Q}_n \overset{p}{\rightarrow}0$ which was showed in the previous item, and that $Q(\theta)$ is uniquely minimized at $\theta=\theta_0$.\\
+\textit{Assumption 3}: $\varepsilon_t$ is a continuous r.v. with $f_{\varepsilon_t}(0)>0$. From the lecture of consistency, Q3.b, we know that $f(X)=\theta_0(X)=med(\varepsilon|X)=0$ is the unique minimizer of $Q(\theta)=\mathbb{E}|Y-X'\theta|$.\\
+Therefore, we have recovered the assumptions of the consistency theorem for M-estimators and $\hat{\theta}_n\overset{p}{\rightarrow}{\theta_0}=0$.
+\end{problem}
+
+\bigskip
+%2.5
+\begin{problem}
+\end{problem}
+%---------------------------------------------------------------%
+%---------------------------------------------------------------%
+
+\section*{Asymptotic Normality}
+
+%3.1
+\begin{problem}
+$\mathbb{P}(\Omega_n)\rightarrow 1$ \textit{if and only if} $1_{\Omega_n} \overset{P}{\rightarrow}1$.\\
+
+\textbf{Solution:}
+\begin{itemize}
+\item{($\Longleftarrow$)}: We have that $\forall \varepsilon>0, \lim_{n\to\infty} P(|1_{\Omega_n}-1|>\varepsilon)=0$. In particular, it must hold for $\varepsilon \in (0,1)$. For this case, $P(|1_{\Omega_n}-1|>\varepsilon)=P(\Omega_n^c)$. Therefore, $P(\Omega_n^c) \overset{n \to\infty}{\longrightarrow} 0$ and consequently, $\mathbb{P}(\Omega_n)\rightarrow 1$.
+
+\item{($\implies$)}: We can use Markov inequality to get
+\begin{align*}
+P(|1_{\Omega_n}-1|>\varepsilon)&\leq \frac{\mathbb{E}((1_{\Omega_n}-1)^2)}{\varepsilon^2}\\
+&\leq \frac{P(\Omega_n)+1-2P(\Omega_n)}{\varepsilon^2} \overset{n\to\infty}{\longrightarrow}0
+\end{align*}
+Then we have the convergence in probability.
+\end{itemize}
+\end{problem}
+
+\bigskip
+%3.2
+\begin{problem}
+\end{problem}
+
+\bigskip
+%3.3
+\begin{problem}
+\end{problem}
+
+\bigskip
+%3.4
+\begin{problem}
+Under Assumptions 2 and 3 above, $\hat{H}_n \equiv \nabla_{\theta\theta}(\widehat{\theta_n}) \overset{P}{\rightarrow} H$.\\
+
+\textbf{Solution:} We will assume throughout the answer that $\widehat{\theta_n}\overset{p}{\rightarrow}\theta_0$. Also, it will be useful to use the following definition of s.e.; for any two sequences of $\Theta$-valued random variables $\{\theta_{1n}\}_{n\in\mathbb{N}}, \{\theta_{2n}\}_{n\in\mathbb{N}}$ with $d(\theta_{1n},\theta_{2n})\overset{p}{\rightarrow}0$ we have $Q_n(\theta_{1n}) - Q_n(\theta_{2n})\overset{p}{\rightarrow}0$.
+\end{problem}
+
+
+
+
+
+
+
 
 
 \end{document}
