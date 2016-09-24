@@ -140,6 +140,33 @@ Therefore, we have recovered the assumptions of the consistency theorem for M-es
 \bigskip
 %2.5
 \begin{problem}
+Show that $N (\varepsilon, d) \leq D(\varepsilon, d) \leq N(\varepsilon/2, d)$. \\
+
+\textbf{Solution:}
+$N (\varepsilon, d) \leq D(\varepsilon, d)$:
+Consider an $\varepsilon$-packing of $\Theta$, $P_{\varepsilon}(\Theta)$, i.e. a collection of $\varepsilon$-separated points, $(p_j \in \Theta)_{j \geq 1}$, such that including any other points would not be $\varepsilon$-separated anymore.
+It is obvious that a collection of $\varepsilon$-balls around $(p_j)_{j \geq 1}$ will cover $\Theta$: otherwise, $P_{\varepsilon}(\Theta)$ would not be a packing as another point can be added to $(p_j)_{j \geq 1}$ such that it is still $\varepsilon$-separated.
+That is, the packing number is equal to the number of $\varepsilon$-balls that cover $\Theta$.
+But then, the minimum number of $\varepsilon$-balls that cover $\Theta$, i.e. the covering number, cannot exceed the packing number: $N (\varepsilon, d) \leq D(\varepsilon, d)$.
+\hfill $\blacksquare$
+
+\medskip
+
+$D (\varepsilon, d) \leq N(\varepsilon/2, d)$:
+Again, consider an $\varepsilon$-packing of $\Theta$, $P_{\varepsilon}(\Theta)$.
+As shown above, $P_{\varepsilon}(\Theta)$ covers $\Theta$.
+Now draw $\varepsilon/2$-balls around $(p_j)_{j \geq 1}$.
+There are two cases: these balls either cover $\Theta$ or not.
+If they do \emph{not} cover $\Theta$, at least one more $\varepsilon/2$-ball should be added to the collection.
+If they \emph{do} cover $\Theta$, we argue that this is a minimal $\varepsilon/2$-cover.
+Since $P_{\varepsilon}(\Theta)$ is a packing, the minimal distance between any two points is $\varepsilon + \eta$, $\eta \to 0$.
+Consequently $\varepsilon/2$-balls around $(p_j)_{j \geq 1}$ will not overlap, they will have at most one common point.
+But then, it is not possible to cover $\Theta$ with less $\varepsilon/2$-balls.
+
+To sum up the two cases, the number of $\varepsilon/2$-balls needed to cover $\Theta$ is not less than the $\varepsilon$-packing number.
+That is, $D (\varepsilon, d) \leq N(\varepsilon/2, d)$.
+\hfill $\blacksquare$
+
 \end{problem}
 %---------------------------------------------------------------%
 %---------------------------------------------------------------%
