@@ -71,7 +71,14 @@ a gives $\theta_1 = \theta_2$ and for $a$.
 %1.3
 \begin{problem}
 \begin{enumerate}[(a)]
-	\item Trivially follows from the law of iterated expectations.
+	\item 
+	\begin{align*}
+		\E \left[ \E_X \left[ |Y - f(X)| \right] \right] &= \int \E_X \left[ |Y - f(X)| \right] f_X (x) dx \\
+		&= \int \int |Y - f(X)| f_{Y | X=x} (y) dy f_X (x) dx \\
+		&= \int \int |Y - f(X)| f_{Y | X=x} (y) f_X (x) dy dx \\
+		&= \int \int |Y - f(X)| f_{Y, X} (y,x) dy dx \\
+		&= \E \left[ |Y - f(X)| \right]
+	\end{align*}
 
 	\item Let $f_{Y|X=x} (y) = f_Z (y)$.
 	The result follows from Problem 1.1 (b).
