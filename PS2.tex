@@ -69,9 +69,15 @@ a gives $\theta_1 = \theta_2$ and for $a$.
 
 \bigskip
 %1.3
-\begin{problem}
+\begin{problem}[Conditional Median and Quantile Regression]
+Let $Y$ be an $\mathbb{R}$-valued random variable and $X$ be an $\mathbb{R}^d$-valued random variable.
+Let $f_{Y|X=x} (y)$ be the conditional probability density of $Y$ given $X=x$ and $\theta_0$ be the conditional median of $Y$ given $X=x$.
+Suppose that for any $x \in \mathbb{R}^d$, $f_{Y|X=x} (y)$ is continuous in $y$ and $f_{Y|X=x} (\theta_0) > 0$.
 \begin{enumerate}[(a)]
 	\item 
+	Show that $\E [|Y - f(X)|] = \E [ \E_X [|Y - f(X)|]]$ for any measurable function $f$, where $\E_X$ is the conditional expectation operator. \\
+
+	\textbf{Solution:}
 	\begin{align*}
 		\E \left[ \E_X \left[ |Y - f(X)| \right] \right] &= \int \int \E_X \left[ |Y - f(X)| \right] f_{Y,X} (y,x) dx \, dy\\
 		&= \int \E_X \left[ |Y - f(X)| \right] f_X (x) dx \\
@@ -82,10 +88,21 @@ a gives $\theta_1 = \theta_2$ and for $a$.
 	\end{align*}
 	The second line follows from the fact that the inner conditional expectation is a function of $x$ only.
 
-	\item Let $f_{Y|X=x} (y) = f_Z (y)$.
+	\item 
+	Show that $\E [|Y - f(X)|]$ is uniquely minimized when we take the function $f(\cdot)$ to be $\theta_0 (\cdot)$.
+	\\
+
+	\textbf{Solution:}
+	Let $f_{Y|X=x} (y) = f_Z (y)$.
 	The result follows from Problem 1.1 (b).
 
-	\item Let $f(x) = \alpha + \beta' x$.
+	\item 
+	Suppose that $\theta_0(x) = \alpha_0 + \beta_0'x$.
+	Also suppose that the distribution of $X$ does not collapse to hyperplanes.
+	Show that $\E \left| Y - \alpha - \beta'X \right|$ is uniquely minimized at $\alpha = \alpha_0$, $\beta = \beta_0$.
+	\\
+
+	\textbf{Solution:} Let $f(x) = \alpha + \beta' x$.
 	The result follows from Part (b).
 \end{enumerate}
 \end{problem}
