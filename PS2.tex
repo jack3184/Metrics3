@@ -47,7 +47,23 @@
 
 
 %1.1
-\begin{problem}
+\begin{problem}(Median) Let Y be a $\mathbb{R}$-valued random variable with probability density $f_Y(\cdot)$. Let $\theta_0$ be the median of Y (i.e. $\theta_0 = \inf \{y: \mathbb{P}(Y \leq y) \geq 0.5 \}).$ Suppose that the function $f_Y$ is continuous and $f_Y(\theta_0) > 0$. \\
+	(a) Let $Q(\theta) = \mathbb{E}|Y - \theta|.$ Compute $Q'(\theta)$ and $Q''(\theta)$.
+	\\
+	(b) Show that $Q(\theta)$ is uniquely minimized at $\theta_0$. \\
+	
+	\textbf{Solution:}  \\
+	
+	\paragraph*{a} 
+	\begin{align*}
+		Q(\theta) &= \int_{\theta}^{\infty} (y - \theta) f_Y(y) \diff y + \int_{-\infty}^{ \theta} (y - \theta) f_Y(y) \diff y, \\
+		\text{ therefore by Leibniz rule we can get}\\
+		Q'(\theta) &= \int_{\theta}^{\infty} (-f_Y(y)) \diff y - (\theta - \theta) + \int_{-\infty}^{ \theta} f_Y(y) \diff y +  (\theta - \theta) \\ 
+		&= - (1 - F_Y(\theta)) + F_Y(\theta) = 2 F_Y(\theta) - 1 \text{ and }\\
+      	Q''(\theta) &= 2 f_Y(\theta). \\
+		\end{align*} \\
+		\paragraph*{b} Since $\theta_0$ is the median of Y, the function $f_Y$ is continuous and $f_Y(\theta_0) > 0$, $2 F_Y(\theta_0) - 1 = 0$ and $2 f_Y(\theta_0) > 0$, that is, $Q(\theta)$ is uniquely minimized at $\theta_0$. 
+
 \end{problem}
 
 \bigskip
@@ -132,7 +148,15 @@ Since $\varepsilon$ and $\eta$ are arbitrary, we have the result.
 
 \bigskip
 %2.2
-\begin{problem}
+\begin{problem} Let $(\Theta, d)$ be a metric space and let $Q$ be a deterministic function on $\Theta$. Then the sequence $(Q_n)_{n \in \mathbf{N}}$ defined by $Q_n = Q$ for every $n \in \mathbb{N}$ is s.e. if and only if $Q$ is uniformly continuous.\\
+	
+	\textbf{Solution:} \\
+	
+	If $Q$ is uniformly continuous, then $\forall \epsilon > 0, \exists \delta_\epsilon > 0$ such that $\forall \theta, \theta' \in \Theta, d(\theta, \theta') < \delta_\epsilon \implies \\ |Q(\theta) - Q(\theta')| < \epsilon$.
+	
+	That is, $\sup\limits_{d(\theta, \theta') < \delta_\epsilon} |Q(\theta) - Q(\theta')| < \epsilon$ and since $Q$ is deterministic $\mathbb{P} (\sup\limits_{d(\theta, \theta') < \delta_\epsilon} |Q(\theta) - Q(\theta')| < \epsilon) = 1$ and $Q_n = Q$ for every $n \in \mathbb{N}$,  $ \limsup\limits_{n \rightarrow \infty} \mathbb{P} (\sup\limits_{d(\theta, \theta') < \delta_\epsilon} |Q_n(\theta) - Q_n(\theta')| > \epsilon) = 0 < \eta$, that is, the sequence $(Q_n)_{n \in \mathbf{N}}$ is s.e..  \\
+	
+	If  $(Q_n)_{n \in \mathbf{N}}$ is s.e., then    $ \forall \epsilon > 0, \eta > 0, \exists \delta > 0$ such that $\limsup\limits_{n \rightarrow \infty} \mathbb{P} (\sup\limits_{d(\theta, \theta') < \delta} |Q_n(\theta) - Q_n(\theta')| > \epsilon) < \eta$. Since  $Q_n = Q$ for every $n \in \mathbb{N}$, we can drop the $\limsup\limits_{n \rightarrow \infty}$ and get \\ $\mathbb{P} (\sup\limits_{d(\theta, \theta') < \delta} |Q(\theta) - Q(\theta')| > \epsilon) < \eta$. Now since $Q$ is deterministic function and this statement hold $\forall \eta > 0$, we can get that $\sup\limits_{d(\theta, \theta') < \delta} |Q(\theta) - Q(\theta')| < \epsilon$. That is, $Q$ is uniformly continuous.  
 \end{problem}
 
 \bigskip
