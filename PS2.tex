@@ -322,7 +322,40 @@ Then we have the convergence in probability.
 
 \bigskip
 %3.2
-\begin{problem}
+\begin{problem} (Asymptotic Normality of MLE) Read Theorem 3.3 of Newey-McFadden [NM]. Discuss the role of each assumption.
+
+\textbf{Solution:} \\
+
+\textit{Theorem 3.3} Suppose that $z_1, \dots, z_n$ are i.i.d., the hypotheses of Theorem 2.5 are satisfied and 
+\begin{enumerate}
+	\item $\theta_0 \in \text{interior}(\Theta)$
+	
+	\item $f(z|\theta)$ is twice continuously differentiable and $f(z|\theta) > 0$ in a neighborhood of $\mathcal{N}$ of $\theta_0$
+	
+	\item $\int \sup_{\theta \in \mathcal{N}} || \nabla_\theta f(z|\theta) || \diff z < \infty, \int \sup_{\theta \in \mathcal{N}} || \nabla_{\theta \theta} f(z|\theta) || \diff z < \infty$
+	
+	\item $J = \mathbb{E} [\nabla_\theta \ln f(z|\theta_0) \{\nabla_\theta \ln f(z|\theta_0)  \}' ]$ exists and is nonsingular
+	
+	\item  $ \mathbb{E} [ \sup_{\theta \in \mathcal{N}} || \nabla_{\theta \theta}  \times \ln f(z|\theta)||] < \infty$.
+\end{enumerate}
+Then $\sqrt{n}(\hat{\theta} - \theta_0) \xrightarrow{d} N(0, J^{-1}).$ \\
+ 
+Role of assumption: \\
+
+``$z_1, \dots, z_n$ are i.i.d.'': Necessary to use Linberg-Levy CLT and sufficient for LLN. \\
+
+``Hypotheses ($\hat{\theta} \xrightarrow{p}  \theta_0$) of Theorem 2.5 is satisfied'':  it ensures that we can use CMT for $f$ and get w.p.a. 1 result. \\
+
+1.  $\theta_0 \in \text{interior}(\Theta)$: if the distribution is truncated at $\theta_0$, which is on the boundary of $\Theta$, then we could not get asymptotic normality.\footnote{See e.g. example in page 2144 in NM} \\
+
+2. $f(z|\theta)$ is twice continuously differentiable and $f(z|\theta) > 0$ in a neighborhood of $\mathcal{N}$ if $\theta_0$: It ensures that we can characterize $\hat{\theta}$ in terms of the first-order condition, that is, $f(z|\theta)$ is differentiable around $\theta_0$ and it gives that $\nabla_\theta f(z|\theta_0)$ is approaching 0 w.p.a. 1. \\
+
+3. $\int \sup_{\theta \in \mathcal{N}} || \nabla_\theta f(z|\theta) || \diff z < \infty, \int \sup_{\theta \in \mathcal{N}} || \nabla_{\theta \theta} f(z|\theta) || \diff z < \infty$: Both are bounded, therefore we can apply CLT to the first derivative and LLN for the second derivative in the proof.\\
+
+4. $J = \mathbb{E} [\nabla_\theta \ln f(z|\theta_0) \{\nabla_\theta \ln f(z|\theta_0)  \}' ]$ exists and is nonsingular: If $J$ did not exist or were not nonsingular, we could not calculate the asymptotic variance matrix.\\
+
+5. $ \mathbb{E} [ \sup_{\theta \in \mathcal{N}} || \nabla_{\theta \theta}  \times \ln f(z|\theta)||] < \infty$: \\
+
 \end{problem}
 
 \bigskip
