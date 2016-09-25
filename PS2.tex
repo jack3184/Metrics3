@@ -356,6 +356,58 @@ Role of assumption: \\
 
 5. $ \mathbb{E} [ \sup_{\theta \in \mathcal{N}} || \nabla_{\theta \theta}  \times \ln f(z|\theta)||] < \infty$: \\
 
+\textbf{Jackson's solution}
+Role of assumptions: \\
+
+Theorem 3.3 is proved by showing the conditions of Theorem 3.1
+NM are satisfied. Thm 3.1 is an asymptotic normality result for
+M-estimators; similar but slightly weaker than our 
+theorem (the difference is that NM 3.1 assumes (primitives for)
+uniform convergence of $\nabla_{\theta\theta} Q_n$, whereas we assume
+stochastic equicontinuity.) Noticing $f(z|\theta)$ is necessary to
+take logs, each of the other conditions of Theorem 3.3
+can be mapped to our asymptotic normality result:
+
+\begin{enumerate}
+\item \textbf{A consistent estimator} \\The hypotheses of Th 2.5
+  ensure there is a consistent estimator, which is $\arg\min
+  \overline{\log f(x_i; \theta)}$
+
+\item $\mathbf{\theta_0 \in \textbf{int}\Theta\textbf{, }Q_n \textbf{
+      is }c^2}$ \\
+The first part is 3.3(i), the second is from 3.3(ii) 
+
+\item $\mathbf{\nabla_{\theta\theta} Q_n \textbf{ is s.e, }
+    \nabla_{\theta\theta} Q_n(\theta_0) - H = o_p(1)}$ \\
+These both follow from a ULLN (lemma 2.4). This requires
+the data be iid, $\Theta$ compact (constructed in a neighbourhood
+about $\theta_0$), $\nabla_{\theta\theta}
+Q_n(\theta_0)$ continuous and a dominance condition (3.3(v)). This
+uniform convergence result then implies both s.e and p-convergence of $\nabla_{\theta\theta} Q_n(\theta_0)$ to $H =
+\mathrm{E}[\nabla_{\theta\theta} \log f(X;\theta_0)]$
+
+\item \textbf{Non-singularity of \textit{H}} \\
+3.3(iv) is non-singularity of $J \equiv E[\nabla_{\theta} \log
+f(X;\theta) \{\nabla_{\theta} \log f(X;\theta)\}']$. However, 3.3(iii)
+and another result (NM lemma 3.6) give that $J = -H$, so $H$ is also
+non-singular.
+
+\item $\mathbf{\sqrt{n}\nabla_{\theta}Q_n(\theta_0) \Rightarrow
+    N(0,S)}$ \\
+  Here $S= J$ notationally and
+  $\sqrt{n}\nabla_{\theta}Q_n(\theta_0) = \sqrt{n}
+  \overline{\nabla_{\theta}\log f(x_i; \theta_0)}$. This follows
+  easily from a CLT since the data is iid and
+  $\nabla_{\theta}\log f(x_i; \theta_0)$ is mean zero with covariance
+  matrix $J$.
+\end{enumerate}
+Applying our theorem, $\sqrt{n}(\hat{\theta}_n - \theta_0) \Rightarrow
+-J^{-1} N(0, J) = N(0, J^{-1})$ \\
+
+
+\textbf{If anyone understands how they apply lemma 3.6, I'd love to know!}
+
+
 \end{problem}
 
 \bigskip
