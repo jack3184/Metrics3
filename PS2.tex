@@ -364,7 +364,7 @@ NM are satisfied. Thm 3.1 is an asymptotic normality result for
 M-estimators; similar but slightly weaker than our 
 theorem (the difference is that NM 3.1 assumes (primitives for)
 uniform convergence of $\nabla_{\theta\theta} Q_n$, whereas we assume
-stochastic equicontinuity.) Noticing $f(z|\theta)$ is necessary to
+stochastic equicontinuity.) Noticing $f(z|\theta) > 0$ is necessary to
 take logs, each of the other conditions of Theorem 3.3
 can be mapped to our asymptotic normality result:
 
@@ -388,15 +388,16 @@ uniform convergence result then implies both s.e and p-convergence of $\nabla_{\
 
 \item \textbf{Non-singularity of \textit{H}} \\
 3.3(iv) is non-singularity of $J \equiv E[\nabla_{\theta} \log
-f(X;\theta) \{\nabla_{\theta} \log f(X;\theta)\}']$. However, 3.3(iii)
+f(X;\theta_0) \{\nabla_{\theta} \log f(X;\theta_0)\}']$. However,
+because the model is correctly specified, 3.3(iii)
 and another result (NM lemma 3.6) give that $J = -H$, so $H$ is also
 non-singular.
 
 \item $\mathbf{\sqrt{n}\nabla_{\theta}Q_n(\theta_0) \Rightarrow
     N(0,S)}$ \\
-  Here $S= J$ notationally and
+  Here $S= J$ and
   $\sqrt{n}\nabla_{\theta}Q_n(\theta_0) = \sqrt{n}
-  \overline{\nabla_{\theta}\log f(x_i; \theta_0)}$. This follows
+  \overline{\nabla_{\theta}\log f(x_i; \theta_0)}$. The follows
   easily from a CLT since the data is iid and
   $\nabla_{\theta}\log f(x_i; \theta_0)$ is mean zero with covariance
   matrix $J$.
