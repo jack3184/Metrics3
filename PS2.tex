@@ -3,7 +3,7 @@
 %\usepackage{amsfonts} % For \mathbb command
 %\usepackage[top=1in, bottom=1.25in, left=1in, right=1in]{geometry}
 \usepackage{amsmath} % for align
-\usepackage{mathtools, cancel} % for lVert
+\usepackage{mathtools, cancel, xfrac} % for lVert
 %\usepackage{graphicx} % for charts
 
 % Set path
@@ -364,8 +364,8 @@ NM are satisfied. Thm 3.1 is an asymptotic normality result for
 M-estimators; similar but slightly weaker than our 
 theorem (the difference is that NM 3.1 assumes (primitives for)
 uniform convergence of $\nabla_{\theta\theta} Q_n$, whereas we assume
-stochastic equicontinuity.) Noticing $f(z|\theta) > 0$ is necessary to
-take logs, each of the other conditions of Theorem 3.3
+stochastic equicontinuity.) Noticing $f(z|\theta) > 0$ is necessary
+for $\log f$ to be defined, each of the other conditions of Theorem 3.3
 can be mapped to our asymptotic normality result:
 
 \begin{enumerate}
@@ -390,14 +390,24 @@ uniform convergence result then implies both s.e and p-convergence of $\nabla_{\
 3.3(iv) is non-singularity of $J \equiv E[\nabla_{\theta} \log
 f(X;\theta_0) \{\nabla_{\theta} \log f(X;\theta_0)\}']$. However,
 because the model is correctly specified, 3.3(iii)
-and another result (NM lemma 3.6) give that $J = -H$, so $H$ is also
-non-singular.
+and another result (NM lemma 3.6) allow the integral and gradient
+operators to be exchanged, so that $J = -H$, so $H$ is also
+non-singular. To see $J = -H$, notice $\int f = 1$ implies:
+\begin{multline*}
+  0 = \nabla_{\theta} \int f =
+  \nabla_{\theta\theta'} \int f = \int  \nabla_{\theta \theta'}  f = \int
+  \tfrac{1}{f} \nabla_{\theta'} (f \nabla_{\theta} \log f) f = \\
+  \mathrm{E} [\tfrac{1}{f} \nabla_{\theta'} (f \nabla_{\theta} \log
+  f)] = \mathrm{E}[\nabla_{\theta\theta'}\log f] +
+  \mathrm{E}[\nabla_{\theta} \log f \{\nabla_{\theta} \log f\}'] = H + J
+\end{multline*}
 
 \item $\mathbf{\sqrt{n}\nabla_{\theta}Q_n(\theta_0) \Rightarrow
     N(0,S)}$ \\
   Here $S= J$ and
   $\sqrt{n}\nabla_{\theta}Q_n(\theta_0) = \sqrt{n}
-  \overline{\nabla_{\theta}\log f(x_i; \theta_0)}$. The follows
+  \overline{\nabla_{\theta}\log f(x_i; \theta_0)}$. The convergence
+  result follows
   easily from a CLT since the data is iid and
   $\nabla_{\theta}\log f(x_i; \theta_0)$ is mean zero with covariance
   matrix $J$.
@@ -405,15 +415,28 @@ non-singular.
 Applying our theorem, $\sqrt{n}(\hat{\theta}_n - \theta_0) \Rightarrow
 -J^{-1} N(0, J) = N(0, J^{-1})$ \\
 
-
-\textbf{If anyone understands how they apply lemma 3.6, I'd love to know!}
-
-
 \end{problem}
 
 \bigskip
 %3.3
 \begin{problem}
+In the previous problem, correct specification is only important so
+that $J = -H$ in the MLE setting. More precisely, if the true
+distribution is $g$ not $f$, then, in the above demonstration of $J =
+- H$, the expectation must be taken with respect to $g$, causing the
+series of equalities to break down. (Notice, however, since we assume $\theta_0
+= \arg\min \mathrm{E}_g[\log f(X;\theta)]$, the regularity conditions
+imply $\mathrm{E}_g[\nabla_{\theta}\log f(X;\theta_0)] = 0$.) Indeed,
+all conditions for
+our M-estimator asymptotic normality theorem still apply, so
+\begin{equation*}
+  n^{\sfrac{1}{2}}\left( \hat{\theta}_n - \theta_0 \right) \Rightarrow
+  N(0, H^{-1}S H^{-1})
+\end{equation*}
+Where $S = \mathrm{E}_g\left[\nabla_{\theta}\log f(X; \theta_0) \{\nabla_{\theta}\log
+f(X; \theta_0)\}'\right]$ and $H = \mathrm{E}_g\left[ \nabla_{\theta\theta'}
+  \log f(X; \theta_0)\right]$
+
 \end{problem}
 
 \bigskip
