@@ -110,7 +110,7 @@ Suppose that for any $x \in \mathbb{R}^d$, $f_{Y|X=x} (y)$ is continuous in $y$ 
 
 	\textbf{Solution:}
 	Let $f_{Y|X=x} (y) = f_Z (y)$.
-	The result follows from Problem 1.1 (b).
+	Since the conditional median is unique, the result follows from Problem 1.1 (b).
 
 	\item 
 	Suppose that $\theta_0(x) = \alpha_0 + \beta_0'x$.
@@ -119,7 +119,12 @@ Suppose that for any $x \in \mathbb{R}^d$, $f_{Y|X=x} (y)$ is continuous in $y$ 
 	\\
 
 	\textbf{Solution:} Let $f(x) = \alpha + \beta' x$.
-	The result follows from Part (b).
+	From Part (b), we have a unique function.
+	Since we assume linearity, it must be the case that $f(x)$ is linear.
+	Now consider two minimizers $f(x)$ and $\theta_0(x)$.
+	Then $\Pr (X'(\beta-\beta_0) = (\alpha-\alpha_0)) = 1$ by uniqueness of the function.
+	Since $X$ doesn't collapse on hyperplanes by assumption, the result follows from Problem 1.2(b).
+
 \end{enumerate}
 \end{problem}
 
