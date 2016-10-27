@@ -1,0 +1,182 @@
+\documentclass[11pt,letterpaper]{article}                  % Define document class
+
+%\usepackage{amsfonts} % For \mathbb command
+%\usepackage[top=1in, bottom=1.25in, left=1in, right=1in]{geometry}
+%\usepackage{amsmath} % for align
+%\usepackage{mathtools} % for lVert
+%\usepackage{graphicx} % for charts
+
+% Set path
+\newcommand{\path}{Preamble}
+
+% Text packages
+\input{"\path/packText.tex"}
+\setlength\parindent{0pt}                                  % No indentation for the whole document
+
+% Figure/table packages
+\input{"\path/packFigure.tex"}
+
+% Math packages
+\input{"\path/packMath.tex"}
+
+% Graphics packages
+\input{"\path/packGraph.tex"}
+
+\allowdisplaybreaks % so that aligned equations can be broken across pages
+
+%% Convenient math abbreviations
+\newcommand*\diff{\mathop{}\!d} % nicely formatted integral dx
+%\newcommand{\E}{\mathrm{E}} % Expectation operator
+\newcommand{\Var}{\mathrm{V}} % Variance operator
+\newcommand{\Cov}{\mathrm{Cov}} % Covariance operator
+%\newtheorem{problem}{Problem}
+%\DeclarePairedDelimiter\norm{\lVert}{\rVert} % For Euclidean norm
+
+
+% Title
+\title{Problem Set 3 \\ \medskip \Large{Econometrics III}}
+\author{\Large Jackson Bunting, Attila Gyetvai, Peter Horvath, Leonardo Salim Saker Chaves}
+\date{\today}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{document}
+
+\maketitle
+\section{Moment Estimation}
+
+%1.1
+\begin{problem}
+
+\end{problem}
+
+\bigskip
+%1.2
+\begin{problem}
+
+\end{problem}
+
+\bigskip
+%1.3
+\begin{problem}
+
+\end{problem}
+
+\bigskip
+%1.4
+\begin{problem}
+
+\end{problem}
+
+\bigskip
+%1.5
+\begin{problem}
+
+\end{problem}
+
+\bigskip
+%1.6
+\begin{problem}
+
+\end{problem}
+
+\bigskip
+%1.7
+\begin{problem}
+
+\end{problem}
+
+\section{Empirical Process}
+
+%2.1
+\begin{problem}
+
+\end{problem}
+
+\bigskip
+%2.2
+\begin{problem}
+
+\end{problem}
+
+\bigskip
+\section{Entropy Conditions}
+
+%3.1
+\begin{problem} Consider $\mathcal{C}\equiv \{(-\infty, a_1] \times (-\infty, a_2]; a_1,a_2 \in \mathbb{R}\}$. Show that the VC-index of $\mathcal{C}$ is not greater than 3.\\
+
+\textbf{Solution:} We are considering $\chi = \mathbb{R}^2$. (BWOC) Suppose that VC-index is greater than 3, let's say 4. Then, $\mathcal{C}$ can shatter any $\chi_0 \subseteq \mathbb{R}^2$ with 4 elements. Take $X_0 = \{(1,0); (1,-1), (-1,1)\}$\\
+
+There isn't $C \in \mathcal{C}$; $\{(1,0)\} = C \cap \chi_0$ because you will need to include $\{(1,-1)\}$ on it.\\
+
+$\implies$ VC-index must be less than 4.
+\end{problem}
+
+\bigskip
+%3.2
+\begin{problem} Take this lemma (Pollard 1984, lemma 18) as given. Show that $\mathcal{C}\equiv \{\{g>0\}; g\in \mathcal{G}\}$ forms a VC-class.\\
+
+\textbf{Solution:} Using similar steps as the lemma, we get that $\mathcal{C}' = \{\{s\in S; g(s)>0\}; g \in \mathcal{G}\}$ forms a VC-class. Then by stability properties of VC-class, $\mathcal{C}'^{c}$ will also fomr a VC-class. But notice that $\mathcal{C}'^{c} = \mathcal{C}$. So, we have the proof. 
+\end{problem}
+
+\bigskip
+%3.3
+\begin{problem} Use this lemma (Pollard 1984, lemma 18) to show that the collection of all closed half spaces in $\mathbb{R}^2$ (consisting of points below or above some line in$\mathbb{R}^2$) forms a VC-class.\\
+
+\textbf{Solution:} Any line in $\mathbb{R}^2$ can be written as $0=ax-y+b$, for $a,b \in \mathbb{R}$. The points above the line will be characterized by $\{(x,y)\in \mathbb{R}^2; 0\leq ax-y+b\}$. Therefore we can write the collection of all closed half spaces as:
+\begin{center}
+$\mathcal{C}=\{\{(x,y)\in \mathbb{R}^2; g(x,y)\geq 0\}; g \in \mathcal{G}\}$ where \\
+$\mathcal{G}=\{g:\mathbb{R}^2\mapsto \mathbb{R}; g= y-ax-b = f_1(x,y) - a f_2(x,y) - bf_3(x,y) \text{and } a,b \in \mathbb{R}\}$
+\end{center}
+Therefore, according to Pollard's lemma, $\mathcal{C}$ will form a VC-class with index less than 3. For the points below, $\mathcal{C}_1=\{\{(x,y)\in \mathbb{R}^2; g(x,y)\leq 0\}; g \in \mathcal{G}\}$ we can use a similar argument to show that they will form a VC-class. Finally, we can characterize the collection of all closed half spaces in $\mathbb{R}^2$ as the union of two sets, $\mathcal{C} \cup \mathcal{C}_1$. Since, each of these sets forms a VC-class, by stability property of VC-class, we have the desired result. 
+\end{problem}
+
+\bigskip
+%3.4
+\begin{problem} Show that $\mathcal{C}\equiv \{\text{star-shaped subsets of } \mathbb{R}^2 \ \text{that looks like } "\star" \}$ forms a VC-class.\\
+
+\textbf{Solution:} Notice that star-shaped subsets in $\mathbb{R}^2$ can be made form the intersection of points below and above a finite number of lines. Hence, by stability of VC-class of sets, the collection of star shaped subsets in $\mathbb{R}^2$ will also form a VC-class.
+\end{problem}
+
+\bigskip
+%3.5
+\begin{problem} Suppose that $\mathcal{F}$ is a VC-major class and $\sup_{w \in \mathcal{W}} |f(x)| \leq K$ for some constant K and all $f \in \mathcal{G}$. Show that $\mathcal{F}$ satisfies Pollard's entropy condition.\\
+\textit{(Hint: use stability properties and the above result.)}\\
+
+\textbf{Solution:} Initially, notice that $0\leq \sup_{w \in \mathcal{W}} |f(x)/k|\leq 1$ by assumption. Based on this, we can construct functions $\tilde{f}:W\mapsto [0,1]; \tilde{f}(w) = f(w)/k$ where $f(\cdot) \in \mathcal{F}$.\\
+From previous result, the class of functions $\tilde{\mathcal{F}}$ will be a VC-major class. Now, notice that any $\tilde{f}(\cdot)$ is the limit of a sequence:
+\begin{center}
+$\tilde{f}_m = \sum_{i=1}^m 1/m 1[\tilde{f}>i/m]$
+\end{center}
+Consequently, $\tilde{\mathcal{F}}$ will be the closure of the convex hull of the following:
+\begin{center}
+$\{1[\tilde{f}>i/m]; 1\leq i \leq m, m\geq 1, \tilde{f} \in \tilde{\mathcal{F}}\}$
+\end{center}
+which will form a VC-class. Hence, we can apply Theorem 2 form this lecture notes to this class of indicator functions followed by Theorem 4 also from this lecture notes in order to have $\tilde{\mathcal{F}}$ satisfying Pollard entropy condition.\\
+
+Given that the transformation from $\mathcal{F}$ to $\tilde{\mathcal{F}}$ is just the multiplication by a constant, i.e., $(1/k)$, we can do a similar procedure considering $f = \lim_{m\to \infty} f_m$, where
+\begin{center}
+$f_m = k \sum_{i=1}^m 1/m 1[\tilde{f}>i/m]$
+\end{center}
+And we get that $\mathcal{F}$ satisfies Pollard's entropy condition.
+\begin{align*}
+\int_0^1 \sup_{Q \in \mathcal{Q}} \sqrt{\log(N(\varepsilon ||F||_{Q,2}, Q, \mathcal{F}))} d\varepsilon &\leq \int_0^1 k \varepsilon^{-2v/(v+2)} d\varepsilon = k \int_0^1 \varepsilon^{\frac{-2v}{v+2}} d\varepsilon \\
+&< +\infty
+\end{align*}
+because $\frac{-2v}{v+2}>-1 \iff 2v > v+2 \iff v>2$.
+\end{problem}
+
+\bigskip
+%3.6
+\begin{problem}
+
+\end{problem}
+
+\bigskip
+%3.7
+\begin{problem}
+
+\end{problem}
+
+
+\end{document}
