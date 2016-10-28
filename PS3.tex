@@ -181,8 +181,13 @@ which implies
 \section{Empirical Process}
 
 %2.1
-\begin{problem}
-
+\begin{problem} Show that the outer probability $\mathbb{P}^*$ is subadditive. That is, for $A \subseteq \Omega$ and $B \subseteq \Omega, \mathbb{P}^*(A \cup B) \leq \mathbb{P}^*(A) + \mathbb{P}^*(B)$. (Hint: for C = A or B, approximate $\mathbb{P}^*(C)$ with $\mathbb{P}(C')$ for some measurable C'.) \\
+	
+	\textbf{Solution:}  Let $A \cup B \subseteq C$ for some C. We know that $\mathbb{P}^*(C) = \inf \{\mathbb{P}(C'): C \subseteq C', \, C'$ is measurable$\}$. 
+	
+	$\mathbb{P}^*(A) = \inf \{\mathbb{P}(A'): A \subseteq A', \, A'$ is measurable$\}$ and $\mathbb{P}^*(B) = \inf \{\mathbb{P}(B'): B \subseteq B', \, B'$ is measurable$\}$, and $A \cup B \subseteq A' \cup B' \subseteq C'$. 
+	
+	$\mathbb{P}^*(A \cup B) = \inf \{\mathbb{P}(A' \cup B'): A \cup B \subseteq A' \cup B', \, A'$ and $B'$ are measurable$\} \leq \inf \{\mathbb{P}(A') +  \mathbb{P}(B'): A \subseteq A'$ and $B \subseteq B', \, A'$ and $B'$ are measurable$\}$, since $\mathbb{P}$ is subadditive. And $\inf \{\mathbb{P}(A') +  \mathbb{P}(B'): A \subseteq A'$ and $B \subseteq B', \, A'$ and $B'$ are measurable$\}$ = $\inf \{\mathbb{P}(A'): A \subseteq A', \, A'$ is measurable$\}$ + $\inf \{\mathbb{P}(B'): B \subseteq B', \, B'$ is measurable$\}$, that is, we get $\mathbb{P}^*(A \cup B) \leq \mathbb{P}^*(A) + \mathbb{P}^*(B)$.
 \end{problem}
 
 \bigskip
@@ -266,7 +271,11 @@ because $\frac{-2v}{v+2}>-1 \iff 2v > v+2 \iff v>2$.
 
 \bigskip
 %3.7
-\begin{problem}
+\begin{problem} Let $\mathcal{V}_K$ denote functions with total variation bounded by K. It is known that if $f \in \mathcal{V}_K$, then it can be represented as $f = g - h$ for some $g, h \in \mathcal{M}_K.$ Show that $\{h(w^\intercal \beta): \beta \in \mathbb{R}^d, h \in \mathcal{V}_K \}$ satisfies Pollard's entropy condition. This class is referred to as the Type I class in Andrew's handbook chapter. \\
+	
+	\textbf{Solution:} We know that $h = f - g$ for some $f, g \in \mathcal{M}_K$. From problem 6, we know that $\{f(w^\intercal \beta): \beta \in \mathbb{R}^d, h \in \mathcal{M}_K \}$ and $\{g(w^\intercal \beta): \beta \in \mathbb{R}^d, h \in \mathcal{M}_K \}$ satisfy Pollard's entropy condition.  
+	
+	Using Lemma 3. (with the function $-1$ and $g$) and 2. (for the functions $f$ and $-g$)from the ``Empirical Processes" notes, we can get that $\mathfrak(F) \otimes \mathfrak(-G) \equiv \{f + (-g): f \in \mathcal{M}_K and -g \in \mathcal{M}_K \}$ satisfies Pollard's entropy condition with the envelope $F + (-G)$.   
 
 \end{problem}
 
