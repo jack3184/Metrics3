@@ -46,13 +46,105 @@
 \section{Moment Estimation}
 
 %1.1
-\begin{problem}
+\begin{problem} Consider an alternative proof for the asymptotics of the GMM estimator by applying the proof strategy for general M-estimators discussed in the ``Asymptotic Normality" notes. \\
+
+\textbf{Solution:} $\hat{\theta}_n = \arg\min \bar{g}_n(\theta)^\intercal W_n \bar{g}_n(\theta) = \arg\min Q_n(\theta)$
+
+Therefore, $\nabla_\theta Q_n(\hat{\theta}_n) = 0$. In order to take the Taylor expansion around $\theta_0$, we need to assume that $\bar{g}_n(\theta)$ is twice continuously differentiable in a neighborhood of $\theta_0$. 
+
+So we can get:
+
+\begin{equation*}
+	\nabla_\theta Q_n(\hat{\theta}_n) = 0 = \nabla_\theta Q_n(\theta_0) +  \nabla_{\theta \theta} Q_n(\bar{\theta}) (\hat{\theta}_n - \theta_0),
+\end{equation*} where
+
+\begin{equation*}
+\nabla_\theta Q_n(\theta_0) = \bar{g}_n(\theta_0)^\intercal W_n \bar{g}_n(\theta_0) = G^\intercal W \bar{g}_n(\theta_0) + o_p(1)
+\end{equation*}
+
+%\begin{equation*}
+\begin{align*}
+\nabla_{\theta \theta} Q_n(\bar{\theta})  & = \nabla_{\theta \theta} \bar{g}_n(\bar{\theta})^\intercal W_n\bar{g}_n(\bar{\theta}) +  \nabla_{\theta} 
+\bar{g}_n(\bar{\theta})^\intercal W_n \bar{g}_n(\bar{\theta}) \\
+& = \nabla_{\theta \theta} \bar{g}_n(\bar{\theta})^\intercal W_n\bar{g}_n(\theta_0) + G^\intercal W G + o_p(1) \\ 
+& =O_p(1)o_p(1)+G^\intercal W G + o_p(1) \\
+& = G'WG+o_p(1). 
+\end{align*}
+%\end{equation*}
+
+Therefore, we can get that 
+
+\begin{align*}
+	0 = G' W \bar{g}_n(\bar{\theta}_0) + G' W G (\hat{\theta}_n - \theta_0)+o_p(1),
+\end{align*}
+which implies 
+
+\begin{align*}
+	\sqrt{n}(\hat{\theta}_n - \theta_0) = (G^\intercal W G)^{-1} G^\intercal W \sqrt{n} \bar{g}_n(\theta_0) \xrightarrow{d} N(0; (G^\intercal W G)^{-1} G^\intercal W S W G (G^\intercal W G)^{-1}).
+\end{align*}
 
 \end{problem}
 
 \bigskip
 %1.2
-\begin{problem}
+\begin{problem} Write down high-level conditions in the style of the lecture notes (or Newey-McFadden's handbook chapter). under these assumptions, derive the consistency and symptotic normality of the CUE. Verify that it attains the assymptotic variance using the optimal weighting matrix. \\
+	
+\textbf{Solution:} 
+\begin{align*}
+	\hat{\theta}_n = \arg\min\limits_{\theta \in \Theta} \bar{g}_n(\theta)^\intercal \hat{S}_n(\theta)^{-1} \bar{g}_n(\theta) = \arg\min_{\theta \in \Theta} Q_n(\theta)
+\end{align*}
+
+Obs: $\partial A^{-1} = - A^{-1} \partial A A^{-1}$, $\partial (A \cdot B) = \partial A \cdot B + A \cdot B$ and $vec(d U) = d vec(U)$. 
+	
+FOC: 
+
+\begin{align*}
+	\nabla_{\theta} Q_n(\bar{\theta}_n)=0,
+\end{align*} 
+
+that is,
+\begin{align*}
+\underbrace{\nabla_{\theta} Q_n(\bar{\theta}_n)}_{d \times 1}= \nabla_\theta \bar{g}_n(\theta)^\intercal \hat{S}_n(\theta)^{-1} \bar{g}_n(\theta) + \left(\frac{\partial}{\partial \theta} \hat{S}_n(\theta)^{-1} \bar{g}_n(\theta)    \right)^\intercal \bar{g}_n(\theta),
+\end{align*} 
+
+Obs:
+
+\begin{align*}
+	\frac{\partial}{\partial \theta} \hat{S}_n(\theta)^{-1} \bar{g}_n(\theta) & = \frac{\partial}{\partial \theta} \left(\bar{g}_n(\theta) \otimes I_n  \right) \cdot vec(\hat{S}_n(\theta)^{-1}) \\
+	& = \underbrace{\hat{S}_n(\theta)^{-1} \nabla \bar{g}_n(\theta)}_{k \times d} - \underbrace{\left(\bar{g}_n(\theta)^\intercal \otimes I_k \right) \left(\hat{S}_n(\theta)^{-1} \otimes \hat{S}_n(\theta)^{-1} \right) \frac{\partial vec(\hat{S}_n(\theta))}{\partial}}_{k \times d},
+\end{align*}
+
+which implies
+
+\begin{align*}
+	0 & = \nabla_\theta \bar{g}_n(\theta)^\intercal \hat{S}_n(\theta)^{-1} \bar{g}_n(\theta)  + \nabla_\theta \bar{g}_n(\theta)^\intercal \hat{S}_n(\theta)^{-1} \bar{g}_n(\theta)  - \underbrace{\frac{\partial vec(\hat{S}_n(\theta))}{\partial \theta}^\intercal \cdot \left(\hat{S}_n(\theta)^{-1} \bar{g}_n(\hat{\theta}_n) \otimes  \hat{S}_n(\theta)^{-1} \bar{g}_n(\hat{\theta}_n) \right)}_{d \times k^2} \\
+	& = 2 \nabla_\theta \bar{g}_n(\theta)^\intercal \hat{S}_n(\theta)^{-1} \bar{g}_n(\theta) - \frac{\partial vec(\hat{S}_n(\theta))}{\partial \theta}^\intercal \cdot \left(\hat{S}_n(\theta)^{-1} \bar{g}_n(\hat{\theta}_n) \otimes  \hat{S}_n(\theta)^{-1} \bar{g}_n(\hat{\theta}_n) \right)
+\end{align*}
+
+Obs: 
+\begin{align*}
+	\frac{\partial vec(\hat{S}_n(\theta))}{\partial \theta}^\intercal \cdot \left(\hat{S}_n(\theta)^{-1} \bar{g}_n(\hat{\theta}_n) \otimes  \hat{S}_n(\theta)^{-1} \bar{g}_n(\hat{\theta}_n)  \right) = o_p(1)
+\end{align*}
+
+If we assume $S(\cdot)$ continuous and $\sup\limits_{\theta \in \mathcal{N}} || \hat{S}_n(\theta) - S_(\theta) || \xrightarrow{p} 0$, we can conclude the above result. 
+
+Hence, we will have something similar to the GMM proof in the notes
+
+\begin{align*}
+	0  = \nabla_\theta \bar{g}_n(\hat{\theta}_n)^\intercal \hat{S}_n(\hat{\theta}_n)^{-1} \bar{g}_n(\hat{\theta}_n) + o_p(1).
+\end{align*}
+
+For MVT,
+
+\begin{align*}
+ 0 &=  	\nabla_\theta \bar{g}_n(\hat{\theta}_n)^\intercal \left(\bar{g}_n(\theta_0)+ \nabla_\theta \bar{g}_n(\bar{\theta}_n) (\hat{\theta}_n - \theta_0) \right) + o_p(1) \\
+ & = (G^\intercal S^{-1} + o_p(1))\left(\bar{g}_n(\theta_0)+ G (\hat{\theta}_n - \theta_0) + o_p(1) \right) + o_p(1), 
+\end{align*}
+
+which implies
+\begin{align*}
+	\sqrt{n}(\hat{\theta}_n - \theta_0) = (G^\intercal S^{-1} G)^{-1} G^\intercal S^{-1} \sqrt{n} \hat{g}_n(\theta)_0 + o_p(1) \xrightarrow{d} (G^\intercal S^{-1} G)^{-1} G^\intercal S^{-1} N(0, S) \sim N(0, (G^\intercal S^{-1} G)^{-1}).
+\end{align*}
 
 \end{problem}
 
