@@ -151,6 +151,36 @@ which implies
 \bigskip
 %1.3
 \begin{problem}
+Suppose that $\hat{\eta}_n$ is an M-estimator obtained by maximizing $\tilde{Q}_n (\eta)$.
+Suppose that 
+\begin{align*}
+	\begin{pmatrix} \sqrt{n} \bar{g}_n (\theta_0, \eta_0) \\ \sqrt{n} \nabla_n \tilde{Q}_n (\eta_0) \end{pmatrix} \overset{d}{\to}
+	N \left( 0, \begin{pmatrix} S_{gg} & S_{g \eta} \\ S_{\eta g} & S_{\eta \eta} \end{pmatrix} \right).
+\end{align*}
+Following the discussion above, derive the asymptotic distribution of $\sqrt{n} (\hat{\theta}_n - \theta_0)$.
+
+\medskip
+\textbf{Solution:} From before,
+\begin{align*}
+	\sqrt{n} \bar{g}_n (\theta_0, \hat{\eta}_n) &= \sqrt{n} \bar{g}_n (\theta_0, \eta_0) + (\Gamma + o_p(1)) \sqrt{n} (\hat{\eta}_n - \eta_0).
+	\intertext{Assume that the conditions for the asymptotic normality of $\sqrt{n} (\hat{\eta}_n - \eta_0)$ hold; specifically, $\nabla_{\eta \eta} \bar{Q}_n (\eta_0) \overset{p}{\to} H(\eta_0)$. Then}
+	\sqrt{n} (\hat{\eta}_n - \eta_0) &= - (H(\eta_0)^{-1} + o_p(1)) \sqrt{n} \nabla_{\eta} \bar{Q} (\eta_0) \\
+	&= H(\eta_0)^{-1} \sqrt{n} \nabla_{\eta} \bar{Q} (\eta_0) + o_p(1) O_p(1).
+	\intertext{Using CMT, it follows that}
+	\sqrt{n} \bar{g}_n (\theta_0, \hat{\eta}_n) &= \begin{pmatrix} I_k, & \Gamma H(\eta_0)^{-1} \end{pmatrix}
+	\begin{pmatrix} \sqrt{n} \bar{g}_n (\theta_0, \eta_0) \\ \sqrt{n} \nabla_{\eta} \bar{Q}_n (\eta_0) \end{pmatrix}
+	+ o_p(1).
+	\intertext{Consequently}
+	\sqrt{n} \bar{g}_n (\theta_0, \hat{\eta}_n) &\overset{d}{\to} \begin{pmatrix} I_k, & \Gamma H(\eta_0)^{-1} \end{pmatrix} N \left( 0, \begin{pmatrix} S_{gg} & S_{g \eta} \\ S_{\eta g} & S_{\eta \eta} \end{pmatrix} \right) \\
+	&\sim N \Bigg( 0, \underbrace{\begin{pmatrix} S_{gg} + \Gamma H(\eta_0)^{-1} S_{g \eta}, & S_{\eta g} + \Gamma H(\eta_0)^{-1} S_{\eta \eta} \end{pmatrix} \begin{pmatrix} I_k \\ H(\eta_0)^{-1} \Gamma^{\intercal} \end{pmatrix}}_{=: A} \Bigg).
+	\intertext{Using that $S_{\eta \eta} = H(\eta_0)^{-1}$, $A$ can be written as}
+	A &= S_{gg} + \Gamma H(\eta_0)^{-1} S_{g \eta} + S_{\eta g} H(\eta_0)^{-1} \Gamma^{\intercal} + \Gamma H(\eta_0)^{-3} \Gamma^{\intercal}.
+	\intertext{Then, using that $\sqrt{n} (\hat{\theta}_n -\theta_0) = - ((G^{\intercal} W G)^{-1} G^{\intercal} W + o_p(1)) \sqrt{n} \bar{g}_n (\theta_0, \hat{\eta}_n)$,}
+	\sqrt{n} (\hat{\theta}_n - \theta_0) &\overset{d}{\to} (G^{\intercal} W G)^{-1} G^{\intercal} W N(0,A).
+	\intertext{In the special case when the first stage estimation is independent from the estimation of $\theta$, we have that $S_{g \eta} = S_{\eta g} = 0$.
+	Using the optimal weighting matrix $W = S_{gg}^{-1}$, the variance matrix modifies to}
+	\mathrm{Avar} (\hat{\theta}_n) &= (G^\intercal W G)^{-1} + (G^\intercal W G)^{-1} G^\intercal W \Gamma H(\eta_0)^{-3} \Gamma^{\intercal} W G (G^{\intercal} W G)^{-1}.
+\end{align*}
 
 \end{problem}
 
