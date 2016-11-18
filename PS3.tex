@@ -208,6 +208,41 @@ Following the discussion above, derive the asymptotic distribution of $\sqrt{n} 
 Suppose that $\bar{g}_n (\theta, \tau) = \frac{1}{n} \sum_{t=1}^n (\theta X_t + \tau(X_t))$ and $\sup_t \E\abs{X_t} < \infty$.
 Equip $\mathcal{T}$ with the uniform metric.
 Show that $\bar{g}_n (\cdot)$ is s.e.
+
+\medskip
+\begin{proof}
+Using the sup norm on $\mathcal{T}$, define the metric $d((\theta, \tau))$ for $\Theta \times \mathcal{T}$ such that 
+\begin{align*}
+	d((\theta, \tau)) = \abs{\theta} + \sup_{x \in \mathbb{R}} \abs{\tau(x)}.
+\end{align*}
+Furthermore, from the triangle inequality, we have
+\begin{align*}
+	\abs{\bar{g}_n (\theta, \tau) - \bar{g}_n (\theta', \tau')} \leq \frac{1}{n} \sum_{t=1}^n \abs{\theta X_t - \theta' X_t} + \abs{\tau(X_t) - \tau'(X_t)}.
+\end{align*}
+Therefore
+\begin{align*}
+	\omega (\bar{g}_n, \delta) \leq \frac{1}{n} \, \delta \sum_{t=1}^n \abs{X_t} + \frac{1}{n} \, \delta n \leq \delta + \delta \, \frac{1}{n} \sum_{t=1}^n \abs{X_t}.
+\end{align*}
+Notice that 
+\begin{align*}
+	\E \abs{\frac{1}{n} \sum_{t=1}^n \abs{X_t}} &= \E \left( \frac{1}{n} \sum_{t=1}^n \abs{X_t} \right) = \frac{1}{n} \sum_{t=1}^n \E \abs{X_t} \leq \frac{1}{n} \, nK = K
+\end{align*}
+for some $K$ by assumption.
+Hence $\frac{1}{n} \, \sum_{t=1}^n \abs{X_t} = O_p (1)$; that is, for all $\gamma > 0$ exists $M \in \mathbb{R}$ such that $\rm{P} \left( \frac{1}{n} \, \sum_{t=1}^n \abs{X_t} < M \right) > 1 - \gamma$.
+Consequently
+\begin{align*}
+	{\rm P} (\omega(\bar{g}_n, \delta) > \varepsilon) \leq {\rm P} \left( \frac{1}{n} \, \sum_{t=1}^n \abs{X_t} > \frac{\varepsilon - \delta}{\delta} \right).
+\end{align*}
+Now using the definition of boundedness in probability, for all $\eta > 0$ exists $M(\eta) \in \mathbb{R}$ such that ${\rm P} \left( \frac{1}{n} \, \sum_{t=1}^n \abs{X_t} > M(\eta) \right)$.
+Set $M(\eta) = \frac{\varepsilon-\delta}{\delta} \iff \delta = \frac{\varepsilon}{M(\eta) + 1}$ where $\delta > 0$ since $\varepsilon, M(\eta) > 0$.
+
+As a consequence, for all $\varepsilon, \eta > 0$ exists $\delta_{\varepsilon, \eta} > 0$ such that
+\begin{align*}
+	\lim \sup_{n \to \infty} {\rm P} (\omega (\bar{g}_n, \delta_{\varepsilon, \eta}) > \varepsilon) \leq \lim \sup_{n \to \infty} {\rm P} \left( \frac{1}{n} \, \sum_{t=1}^n \abs{X_t} > \frac{\varepsilon-\delta_{\varepsilon, \eta}}{\delta_{\varepsilon, \eta}} \right) < \eta.
+\end{align*}
+That is, $\bar{g}_n$ is s.e.
+\end{proof}
+
 \end{problem}
 
 \section{Empirical Process}
