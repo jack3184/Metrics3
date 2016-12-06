@@ -193,12 +193,87 @@ Following the discussion above, derive the asymptotic distribution of $\sqrt{n} 
 \bigskip
 %1.5
 \begin{problem}
+Consider the case when $\theta_0$ is unknown.
+Suppose that $\hat{\theta}_n$ is an estimator with the following asymptotic linear representation:
+$\sqrt{n} \left( \hat{\theta}_n - \theta_0 \right) = J^{-1} \Delta_n + o_p(1)$ where $J$ is a constant nonsingular matrix and
+\begin{align*}
+	\Delta_n = \frac{1}{\sqrt{n}} \, \sum_i \gamma (W_t, \theta_0).
+\end{align*}
+Let $\bar{g}_n (\tau) = \frac{1}{n} \sum_{t=1}^n g \left( W_t, \hat{\theta}_n, \tau \right)$.
+Solve the following:
+\begin{enumerate}[(a)]
+	\item for each $\tau$, derive the asymptotic distribution of $(\sqrt{n} \bar{g}_n (\tau), \sqrt{n} \bar{g}_n (\tau'))$;
+	\item if $\sqrt{n} \bar{g}_n (\cdot) \Rightarrow v(\cdot)$, characterize the asymptotic distribution of the process $v(\cdot)$.
+\end{enumerate}
+
+\medskip
+\begin{enumerate}[(a)]
+\item Let's revisit the GMM assumptions.
+
+\begin{enumerate}[(1)]
+	\item $g(\cdot)$ is continuously differentiable in a neighborhood of $\theta_0$.
+	\item $\theta_0 \in {\rm int} \, \Theta$.
+
+	These two assumptions guarantee that a Taylor approximation exists:
+	\begin{align*}
+		\bar{g}_n (\tau) &= \bar{g}_n (\theta_0, \tau) + \nabla_{\theta} \bar{g}_n (\bar{\theta}, \tau) (\hat{\theta}_n - \theta_0).
+	\end{align*}
+
+	\item For all $\tau \in T$, $\bar{g}_n (\theta_0, \tau) \pto \E (g(W, \theta_0, \tau)) = 0$.
+	\item $\nabla_{\theta} \bar{g}_n$ is s.e. in $\theta$ in a neighborhood of $\Theta$ and $\nabla_{\theta} \bar{g}_n (\theta_0, \tau) \pto G(\tau)$.
+	\item $\sqrt{n} \left( \hat{\theta}_n - \theta_0 \right) = J^{-1} \Delta_n + o_p(1)$.
+\end{enumerate}
+
+Then
+\begin{align*}
+	\sqrt{n} \bar{g}_n (\tau) &= G(\tau) J^{-1} \Delta_n + o_p (1)
+	\intertext{and hence}
+	G(\tau) J^{-1} N (0, \Gamma) &\sim N \left( 0, G(\tau) J^{-1} \Gamma J^{-1} G(\tau) \right).
+\end{align*}
+
+Invoke the Cramer-Wold device to infer the asymptotic distribution of $(\sqrt{n} \bar{g}_n (\tau), \sqrt{n} \bar{g}_n (\tau'))$.
+Let $\lambda \in \mathbb{R}^{2k}$.
+
+\begin{align*}
+	\lambda' \begin{pmatrix} \sqrt{n} \bar{g}_n (\tau) \\ \sqrt{n} \bar{g}_n (\tau') \end{pmatrix} &= \frac{1}{\sqrt{n}} \, \sum_{t=1}^n \lambda_1' g \left( W_t, \hat{\theta}_n, \tau \right) + \lambda_2' g \left( W_t, \hat{\theta}_n, \tau' \right) \\
+	&= \frac{1}{\sqrt{n}} \, \sum_{t=1}^n \lambda_1' g \left( W_t, {\theta}_0, \tau \right) + \lambda_2' g \left( W_t, {\theta}_0, \tau' \right) \\
+	& \qquad + \left( \lambda_1' \nabla_{\theta} g \left( W_t, \bar{\theta}, \tau \right)  + \lambda_2' \nabla_{\theta} g \left( W_t, \bar{\theta}, \tau' \right) \right) (\hat{\theta}_n - \theta_0) \\
+	&\dto \left( \lambda_1' G(\tau) + \lambda_2' G(\tau) \right) N ( 0, \underbrace{J^{-1} \Gamma J^{-1}}_{=: S} ) \\
+	&= N \left( 0, \lambda_1' G(\tau) S G(\tau)' \lambda_1 + \lambda_1' G(\tau) S G(\tau')' \lambda_2 + \lambda_2' G(\tau') S G(\tau)' \lambda_1  + \lambda_2' G(\tau') S G(\tau')' \lambda_2 \right) \\
+	&= \lambda' N \left( 0, \begin{pmatrix} G(\tau) S G(\tau)' & G(\tau) S G(\tau')' \\ G(\tau') S G(\tau)' & G(\tau') S G(\tau')' \end{pmatrix}  \right)
+\end{align*}
+
+\item It follows from part (a) that $v(\cdot) \sim N \left( 0, G(\cdot) J^{-1} \Gamma J^{-1} G(\cdot)' \right)$.
+The covariance of the process is given by
+\begin{align*}
+	\Cov (v(\tau), v(\tau')) = G(\tau) S G(\tau')'.
+\end{align*} 
+\end{enumerate}
 
 \end{problem}
 
 \bigskip
 %1.6
 \begin{problem}
+Suppose $Q_n (\theta, \eta)$ is s.e. in $(\theta, \eta)$.
+Show that $Q_n (\theta, \eta)$ is s.e. in $\eta$ for each fixed $\theta$.
+
+\medskip
+\begin{proof}
+By definition, for all $\varepsilon > 0$, $\eta > 0$ exists $\delta > 0$ such that
+\begin{align*}
+	\limsup_{n \to \infty} \, & {\rm P} (\omega(Q_n, \delta) > \varepsilon) < \eta
+	\intertext{where}
+	\omega(Q_n, \delta) &= \sup_{\substack{\norm{(\theta, \eta) - (\theta', \eta')} < \delta \\ (\theta, \eta) \in \Theta \\ (\theta', \eta') \in \Theta }} \abs{Q_n (\theta, \eta) - Q_n (\theta', \eta')}.
+	\intertext{Fixing $\theta$ yields}
+	\omega(Q_n (\eta), \delta) &= \sup_{\substack{\norm{(\theta, \eta) - (\theta, \eta')} < \delta \\ (\theta, \eta) \in \Theta }} \abs{Q_n (\theta, \eta) - Q_n (\theta, \eta')} \leq \omega(Q_n, \delta).
+	\intertext{Therefore for all $n \in N$,}
+	& {\rm P} (\omega(Q_n (\eta), \delta) > \varepsilon) \leq {\rm P} (\omega(Q_n, \delta) > \varepsilon);
+	\intertext{hence}
+	\limsup_{n \to \infty} \, & {\rm P} (\omega(Q_n (\eta), \delta) > \varepsilon) \leq \limsup_{n \to \infty} \, {\rm P} (\omega(Q_n, \delta) > \varepsilon) < \eta.
+\end{align*}
+That is, $Q_n (\theta, \eta)$ is s.e. for a fixed $\theta$.
+\end{proof}
 
 \end{problem}
 
