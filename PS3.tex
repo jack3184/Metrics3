@@ -350,11 +350,11 @@ That is, $\bar{g}_n$ is s.e.
 Show that the below condition is equivalent $\forall a \in (0,\infty]$
 \begin{equation*}
   \int_0^a \sup \sqrt{\smash[b]{  \log \underbrace{N\left(\epsilon
-\|M\|_2,{Q},\mathcal{F})\right) }_{N_Q(\epsilon)}} }d\epsilon < \infty
+\|F\|_2,{Q},\mathcal{F})\right) }_{N_Q(\epsilon)}} }d\epsilon < \infty
 \end{equation*}
 \begin{equation*}
  N_Q(\epsilon) =\inf\left\{m:\exists (f_i)^m_{i=1} \subset \mathcal{F}\text{ st }
-  \sup_f\left\{\min_{1\le j \le m}\|f-f_j\|_{Q,2}\right\} < \epsilon \|M\| \right\}
+  \sup_f\left\{\min_{1\le j \le m}\|f-f_j\|_{Q,2}\right\} < \epsilon \|F\| \right\}
 \end{equation*}
 $\Rightarrow (\forall Q \in \mathcal{Q}) $, $N_Q(\epsilon)$ is
 decreasing in $\epsilon$. Therefore $\log N_Q(\epsilon)$ is decreasing
@@ -369,14 +369,14 @@ Now consider $\epsilon \rightarrow \infty$. We have
 $\sup_\tau|f(W,\tau)| \le F(W)$, so for any collection $(f_i)^m
 \subset \mathcal{F}$ and $Q$, 
 \begin{align*}
-   \sup_f\left\{\min_{1\le j \le m}\|f-f_j\|_{Q,2}\right\}\le \|2M\|_{Q,2} < \infty
+   \sup_f\left\{\min_{1\le j \le m}\|f-f_j\|_{Q,2}\right\}\le \|2F\|_{Q,2} < \infty
 \end{align*}
-And $\|2M\|_{Q,2} < \epsilon \|M \|$ as  $\epsilon \rightarrow
+And $\|2F\|_{Q,2} < \epsilon \|F \|$ as  $\epsilon \rightarrow
 \infty$. Therefore for all $\epsilon$ large enough, $\forall (f_i)^m
 \subset \mathcal{F}$ and $Q$,
 \begin{align*}
    \sup_f\left\{\min_{1\le j \le m}\|f-f_j\|_{Q,2}\right\} \le
-  \epsilon \|M\|
+  \epsilon \|F\|
 \end{align*}
 And $N(\epsilon,Q)=1$. So as $\epsilon \rightarrow \infty$,
 \begin{equation*}
@@ -456,6 +456,14 @@ because $\frac{-2v}{v+2}>-1 \iff 2v > v+2 \iff v>2$.
 \bigskip
 %3.6
 \begin{problem}
+Show $\{h(w'\beta): \beta\in \mathbb{R}^d, h \in \mathcal{M}_K\}$
+satisfies PEC. \\
+
+Notice that $\mathcal{F}\equiv\{ w'\beta \equiv \sum_{i=1}^dg_i(w)\beta_i\}$ has finite
+dimension, so that, by example 2, this set is VC-major. Lemma 2 then
+gives that $\{h(f):f\in \mathcal{F},h\in \mathcal{M}_K\}$ is
+VC-major. Therefore, since $\sup_{w\in \mathbb{R}^d}|h(f(w)))| \le K$,
+($\forall f,h$), Q5 implies $\{h(f):f\in \mathcal{F},h\in \mathcal{M}_K\}$ satisfies PEC.
 
 \end{problem}
 
