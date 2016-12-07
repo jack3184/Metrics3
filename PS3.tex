@@ -187,7 +187,19 @@ Following the discussion above, derive the asymptotic distribution of $\sqrt{n} 
 \bigskip
 %1.4
 \begin{problem}
+Verify that $f \mapsto \sup_{\tau \in \mathcal{T}} \| f(\tau) \| $ is continuous
+under $\|f\|_{\infty}$
 
+That is, we want to show
+\begin{equation*}
+\forall \epsilon, \exists \delta : \|f-g\|_{\infty} < \delta
+\Rightarrow  \bigl|\sup\|f\|-\sup\|g\| \bigr| < \epsilon
+\end{equation*}
+Given $\epsilon$, $\delta=\epsilon$ is sufficient since
+\begin{equation*}
+  \bigl|\sup\|f\|-\sup\|g\| \bigr| \le \bigl|\sup\{\|f\|-\|g\|\}
+  \bigr| \le \sup\|f-g\| < \epsilon
+\end{equation*}
 \end{problem}
 
 \bigskip
@@ -335,6 +347,42 @@ That is, $\bar{g}_n$ is s.e.
 \bigskip
 %2.2
 \begin{problem}
+Show that the below condition is equivalent $\forall a \in (0,\infty]$
+\begin{equation*}
+  \int_0^a \sup \sqrt{\smash[b]{  \log \underbrace{N\left(\epsilon
+\|M\|_2,{Q},\mathcal{F})\right) }_{N_Q(\epsilon)}} }d\epsilon < \infty
+\end{equation*}
+\begin{equation*}
+ N_Q(\epsilon) =\inf\left\{m:\exists (f_i)^m_{i=1} \subset \mathcal{F}\text{ st }
+  \sup_f\left\{\min_{1\le j \le m}\|f-f_j\|_{Q,2}\right\} < \epsilon \|M\| \right\}
+\end{equation*}
+$\Rightarrow (\forall Q \in \mathcal{Q}) $, $N_Q(\epsilon)$ is
+decreasing in $\epsilon$. Therefore $\log N_Q(\epsilon)$ is decreasing
+in $\epsilon$. Therefore $\sup_{Q}\sqrt{\log N_Q(\epsilon)}$ is also.
+Therefore $  \int_0^1 \sup \sqrt{  \log {N_Q(\epsilon)} } d\epsilon
+< \infty$ iff $(\forall a \in (0,\infty)$)
+\begin{equation*}
+  \int_0^a \sup \sqrt{  \log {N_Q(\epsilon)} } d\epsilon < \infty
+\end{equation*} 
+
+Now consider $\epsilon \rightarrow \infty$. We have
+$\sup_\tau|f(W,\tau)| \le F(W)$, so for any collection $(f_i)^m
+\subset \mathcal{F}$ and $Q$, 
+\begin{align*}
+   \sup_f\left\{\min_{1\le j \le m}\|f-f_j\|_{Q,2}\right\}\le \|2M\|_{Q,2} < \infty
+\end{align*}
+And $\|2M\|_{Q,2} < \epsilon \|M \|$ as  $\epsilon \rightarrow
+\infty$. Therefore for all $\epsilon$ large enough, $\forall (f_i)^m
+\subset \mathcal{F}$ and $Q$,
+\begin{align*}
+   \sup_f\left\{\min_{1\le j \le m}\|f-f_j\|_{Q,2}\right\} \le
+  \epsilon \|M\|
+\end{align*}
+And $N(\epsilon,Q)=1$. So as $\epsilon \rightarrow \infty$,
+\begin{equation*}
+   \sup \sqrt{  \log {N_Q(\epsilon)} } = 0
+\end{equation*} 
+So the tail of $\epsilon \uparrow \infty$ is inconsequential to PEC.
 
 \end{problem}
 
